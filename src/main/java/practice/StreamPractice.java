@@ -1,18 +1,17 @@
 package practice;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import model.Candidate;
-import model.Cat;
-import model.Person;
-
+import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import java.util.NoSuchElementException;
-import java.util.stream.*;
+import model.Candidate;
+import model.Cat;
+import model.Person;
+
+import static java.util.Locale.filter;
 
 public class StreamPractice {
     public static int findMin(List<String> input) {
@@ -56,14 +55,14 @@ public class StreamPractice {
                                           int maleToAge, List<Person> peopleList) {
         return peopleList.stream()
                 .filter(p -> p.getAge() >= fromAge)
-                .filter(p -> (p.getSex() == Sex.Man && p.getAge() <= maleToAge)
-                        || (p.getSex() == Sex.Woman && p.getAge() <= femaleToAge))
+                .filter(p -> ("man".equalsIgnoreCase(p.getSex()) && p.getAge() <= maleToAge)
+                        || ("woman".equalsIgnoreCase(p.getSex()) && p.getAge() <= femaleToAge))
                 .collect(Collectors.toList());
     }
 
     public List<String> getCatsNames(List<Person> peopleList, int femaleAge) {
         return peopleList.stream()
-                .filter(p -> p.getSex() == Sex.WOMAN && p.getAge() >= femaleAge)
+                .filter(p -> "woman".equalsIgnoreCase(p.getSex()) && p.getAge() >= femaleAge)
                 .flatMap(p -> p.getCats().stream())
                 .map(Cat::getName)
                 .collect(Collectors.toList());

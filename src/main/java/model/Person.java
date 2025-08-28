@@ -33,7 +33,7 @@ public class Person {
         return age;
     }
 
-    public Sex getSex() {
+    public String getSex() {
         return sex;
     }
 
