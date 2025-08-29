@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Person {
-    public boolean getAge;
     private String name;
     private int age;
     private Sex sex;
@@ -33,7 +32,7 @@ public class Person {
         return age;
     }
 
-    public String getSex() {
+    public Sex getSex() {
         return sex;
     }
 
