@@ -97,33 +97,11 @@ public class StreamPractice {
      * We want to reuse our validation in future, so let's write our own impl of Predicate
      * parametrized with Candidate in CandidateValidator.
      */
-    public class CandidateValidator implements Predicate<Candidate> {
-        @Override
-        public boolean test(Candidate candidate) {
-            if (candidate.getAge() < 35) { // кандидат повинен бути 35 або старше
-                return false;
-            }
-            if (!candidate.isAllowedToVote()) {
-                return false;
-            }
-            if (!"Ukrainian".equals(candidate.getNationality())) {
-                return false;
-            }
-
-            String[] period = candidate.getPeriodsInUkr().split("-");
-            if (period.length != 2) {
-                return false;
-            }
-            try {
-                int start = Integer.parseInt(period[0].trim());
-                int end = Integer.parseInt(period[1].trim());
-                if (end < start) {
-                    return false;
-                }
-                return (end - start) >= 10;
-            } catch (NumberFormatException e) {
-                return false;
-            }
-        }
+    public List<String> validateCandidates(List<Candidate> candidates) {
+        return candidates.stream()
+                .filter(new CandidateValidator())
+                .map(Candidate::getName)
+                .sorted()
+                .toList();
     }
 }
