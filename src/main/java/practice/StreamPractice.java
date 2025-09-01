@@ -31,8 +31,8 @@ public class StreamPractice {
      */
     public Double getOddNumsAverage(List<Integer> numbers) {
         return java.util.stream.IntStream.range(0, numbers.size())
-                .map(i -> (i % 2 != 0) ?numbers.get(i) - 1 : numbers.get(i))
-                .filter(n -> n % 2 !=0)
+                .map(i -> (i % 2 != 0) ? numbers.get(i) - 1 : numbers.get(i))
+                .filter(n -> n % 2 != 0)
                 .average()
                 .orElseThrow(java.util.NoSuchElementException::new);
     }
@@ -48,9 +48,8 @@ public class StreamPractice {
     public List<Person> selectMenByAge(List<Person> peopleList, int fromAge, int toAge) {
         return peopleList.stream()
                 .filter(p -> p.getSex() == Person.Sex.MAN)
-                .filter(p -> p.getAge() >= fromAge && p.getAge() <=toAge)
+                .filter(p -> p.getAge() >= fromAge && p.getAge() <= toAge)
                 .toList();
-
     }
 
     /**
@@ -66,7 +65,7 @@ public class StreamPractice {
     public List<Person> getWorkablePeople(int fromAge, int femaleToAge,
                                           int maleToAge, List<Person> peopleList) {
         return peopleList.stream()
-                .filter(p -> p.getAge() >=fromAge)
+                .filter(p -> p.getAge() >= fromAge)
                 .filter(p ->
                         (p.getSex() == Person.Sex.MAN && p.getAge() <= maleToAge)
                                 || (p.getSex() == Person.Sex.WOMAN && p.getAge() <= femaleToAge))
@@ -102,7 +101,7 @@ public class StreamPractice {
     public class CandidateValidator implements Predicate<Candidate> {
         @Override
         public boolean test(Candidate candidate) {
-            if (candidate.getAge() <= 35) {
+            if (candidate.getAge() < 35) { // кандидат повинен бути 35 або старше
                 return false;
             }
             if (!candidate.isAllowedToVote()) {
@@ -117,8 +116,11 @@ public class StreamPractice {
                 return false;
             }
             try {
-                int start = Integer.parseInt(period[0]);
-                int end = Integer.parseInt(period[1]);
+                int start = Integer.parseInt(period[0].trim());
+                int end = Integer.parseInt(period[1].trim());
+                if (end < start) {
+                    return false;
+                }
                 return (end - start) >= 10;
             } catch (NumberFormatException e) {
                 return false;
