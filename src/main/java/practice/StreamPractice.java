@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import model.Candidate;
 import model.Person;
+import core.basesyntax.CandidateValidator;
 
 public class StreamPractice {
     /**
