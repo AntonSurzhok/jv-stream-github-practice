@@ -1,6 +1,5 @@
 package practice;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import model.Candidate;
