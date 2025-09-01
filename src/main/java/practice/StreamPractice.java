@@ -1,6 +1,7 @@
 package practice;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import model.Candidate;
 import model.Person;
 
@@ -101,6 +102,6 @@ public class StreamPractice {
                 .filter(new CandidateValidator())
                 .map(Candidate::getName)
                 .sorted()
-                .toList();
+                .collect(Collectors.toList());
     }
 }
