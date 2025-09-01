@@ -1,10 +1,10 @@
 package practice;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import core.basesyntax.CandidateValidator;
 import model.Candidate;
 import model.Person;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamPractice {
     /**
