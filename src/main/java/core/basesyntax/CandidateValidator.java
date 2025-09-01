@@ -6,7 +6,7 @@ import model.Candidate;
 public class CandidateValidator implements Predicate<Candidate> {
     @Override
     public boolean test(Candidate candidate) {
-        if (candidate.getAge() <= 35) {
+        if (candidate.getAge() < 35) {
             return false;
         }
         if (!candidate.isAllowedToVote()) {
