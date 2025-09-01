@@ -1,4 +1,4 @@
-package practice;
+package core.basesyntax;
 
 import java.util.function.Predicate;
 import model.Candidate;
