@@ -1,12 +1,11 @@
 package practice;
 
 import core.basesyntax.CandidateValidator;
+
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.NoSuchElementException;
 import model.Candidate;
 import model.Person;
-
 
 public class StreamPractice {
     /**
