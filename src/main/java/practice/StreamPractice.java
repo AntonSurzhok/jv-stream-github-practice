@@ -1,7 +1,6 @@
 package practice;
 
 import core.basesyntax.CandidateValidator;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import model.Candidate;
