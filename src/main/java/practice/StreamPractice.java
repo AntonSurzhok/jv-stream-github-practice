@@ -3,8 +3,10 @@ package practice;
 import core.basesyntax.CandidateValidator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
 import model.Candidate;
 import model.Person;
+
 
 public class StreamPractice {
     /**
@@ -34,7 +36,7 @@ public class StreamPractice {
                 .map(i -> (i % 2 != 0) ? numbers.get(i) - 1 : numbers.get(i))
                 .filter(n -> n % 2 != 0)
                 .average()
-                .orElseThrow(java.util.NoSuchElementException::new);
+                .orElseThrow(NoSuchElementException::new);
     }
 
     /**
@@ -103,6 +105,6 @@ public class StreamPractice {
                 .filter(new CandidateValidator())
                 .map(Candidate::getName)
                 .sorted()
-                .collect(Collectors.toList());
+                .toList();
     }
 }
